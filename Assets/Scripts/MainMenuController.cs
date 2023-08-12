@@ -19,12 +19,18 @@ public class MainMenuController : MonoBehaviour
 
     public void LoadGame()
     {
-        StartCoroutine(GameObject.FindObjectOfType<SceneFader>().FadeAndLoadScene(SceneFader.FadeDirection.In, "MainGame"));
+        SceneManager.LoadScene("Level1");
     }
     public void LoadCredits()
     {
 
         SceneManager.LoadScene("Credits");
+    }
+
+    public void LoadConstellations()
+    {
+
+        SceneManager.LoadScene("Constellations");
     }
 
     public void ReturnToMenu()
