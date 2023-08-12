@@ -45,7 +45,6 @@ public class PlayerController : MonoBehaviour
             rb.velocity = new Vector2(maxHorizontalSpeed * direction, rb.velocity.y);
         }
 
-        Debug.Log("grounded: " + IsGrounded());
         if (Input.GetAxis("Jump") > 0 && IsGrounded() && !justJumped)
         {
             Debug.Log("jumping");
