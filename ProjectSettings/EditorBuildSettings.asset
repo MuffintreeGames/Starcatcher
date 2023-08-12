@@ -17,4 +17,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Level1.unity
     guid: 2a10c1b014862c746895141c3a676b56
+  - enabled: 1
+    path: Assets/Scenes/ConstellationCreator.unity
+    guid: ddba6e7e980c6594a9bc52649a5f336a
   m_configObjects: {}
