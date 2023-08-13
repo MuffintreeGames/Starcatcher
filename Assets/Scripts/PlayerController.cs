@@ -10,7 +10,9 @@ public class PlayerController : MonoBehaviour
     static float toggleCooldown = 0.2f;
 
     public LayerMask floorLayers;
-    public Transform feet;
+    public Transform rightFoot;
+    public Transform leftFoot;
+    public Transform center;
     Rigidbody2D rb;
     bool justJumped = false;
     float remainingJumpCooldown = 0f;
@@ -31,7 +33,7 @@ public class PlayerController : MonoBehaviour
 
     bool IsGrounded()
     {
-        return Physics2D.Raycast(feet.position, -Vector3.up, 0.1f, floorLayers.value);
+        return Physics2D.Raycast(rightFoot.position, -Vector3.up, 0.1f, floorLayers.value) || Physics2D.Raycast(leftFoot.position, -Vector3.up, 0.1f, floorLayers.value) || Physics2D.Raycast(center.position, -Vector3.up, 0.1f, floorLayers.value);
     }
 
     private void Update()
@@ -89,6 +91,9 @@ public class PlayerController : MonoBehaviour
             {
                 sprite.flipX = true;
             }
+        } else
+        {
+            rb.velocity = new Vector2(0, rb.velocity.y);
         }
         animator.SetFloat("horizontalSpeed", Mathf.Abs(direction));
 
@@ -113,6 +118,7 @@ public class PlayerController : MonoBehaviour
     public void DeactivatePlayer()
     {
         controlling = false;
+        rb.velocity = new Vector2(0, rb.velocity.y);
         animator.SetBool("inactive", true);
     }
 }

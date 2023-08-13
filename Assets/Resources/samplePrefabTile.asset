@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 46713562d32b80a419d75bf8c76e23c9, type: 3}
+  m_Name: samplePrefabTile
+  m_EditorClassIdentifier: 
+  TileSprite: {fileID: 21300000, guid: 98a8743b5b503fe4f98c411e0452025c, type: 3}
+  TileAssociatedPrefab: {fileID: 1513640020769023157, guid: 3a2ca776a6ef82e4797fca4ff09dfe1f, type: 3}
+  PrefabLocalOffset: 0.5
+  prefabZOffset: -1
