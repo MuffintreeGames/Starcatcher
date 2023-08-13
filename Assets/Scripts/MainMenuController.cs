@@ -27,10 +27,10 @@ public class MainMenuController : MonoBehaviour
         SceneManager.LoadScene("Credits");
     }
 
-    public void LoadConstellations()
+    public void LoadLevelSelect()
     {
 
-        SceneManager.LoadScene("Constellations");
+        SceneManager.LoadScene("LevelSelect");
     }
 
     public void ReturnToMenu()

@@ -316,7 +316,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Constellations
+  m_text: 'Level Select
 
 '
   m_isRightToLeft: 0
@@ -628,7 +628,7 @@ GameObject:
   - component: {fileID: 686282401}
   - component: {fileID: 686282400}
   m_Layer: 5
-  m_Name: Constellation (1)
+  m_Name: Constellation2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -998,7 +998,7 @@ GameObject:
   - component: {fileID: 961940071}
   - component: {fileID: 961940070}
   m_Layer: 5
-  m_Name: Constellation
+  m_Name: Constellation1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1074,7 +1074,7 @@ GameObject:
   - component: {fileID: 1437110546}
   - component: {fileID: 1437110545}
   m_Layer: 5
-  m_Name: Constellation (4)
+  m_Name: Constellation4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1528,7 +1528,7 @@ GameObject:
   - component: {fileID: 1700810095}
   - component: {fileID: 1700810094}
   m_Layer: 5
-  m_Name: ConstellationsButton
+  m_Name: LevelSelectButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1601,7 +1601,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 732922981}
         m_TargetAssemblyTypeName: MainMenuController, Assembly-CSharp
-        m_MethodName: LoadConstellations
+        m_MethodName: LoadLevelSelect
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1661,7 +1661,7 @@ GameObject:
   - component: {fileID: 1848369314}
   - component: {fileID: 1848369313}
   m_Layer: 5
-  m_Name: Constellation (3)
+  m_Name: Constellation3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
