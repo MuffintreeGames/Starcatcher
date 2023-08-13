@@ -13,10 +13,14 @@ public class PlayerController : MonoBehaviour
     Rigidbody2D rb;
     bool justJumped = false;
     float remainingJumpCooldown = 0f;
+    Animator animator;
+    SpriteRenderer sprite;
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        animator = GetComponent<Animator>();
+        sprite = GetComponent<SpriteRenderer>();
     }
 
     bool IsGrounded()
@@ -39,18 +43,30 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
+        bool grounded = IsGrounded();
+        animator.SetBool("grounded", grounded);
         float direction = Input.GetAxis("Horizontal");
         if (direction != 0)
         {
             rb.velocity = new Vector2(maxHorizontalSpeed * direction, rb.velocity.y);
+            if (direction > 0)
+            {
+                sprite.flipX = false;
+            } else
+            {
+                sprite.flipX = true;
+            }
         }
+        animator.SetFloat("horizontalSpeed", Mathf.Abs(direction));
 
-        if (Input.GetAxis("Jump") > 0 && IsGrounded() && !justJumped)
+        if (Input.GetAxis("Jump") > 0 && grounded && !justJumped)
         {
             Debug.Log("jumping");
             rb.AddForce(transform.up * jumpForce, ForceMode2D.Impulse);
             remainingJumpCooldown = jumpCooldown;
             justJumped = true;
+            animator.SetBool("grounded", false);
         }
+        animator.SetFloat("verticalSpeed", rb.velocity.y);
     }
 }

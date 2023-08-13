@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.SceneManagement;
 
 public class CollectStarEvent: UnityEvent
 {
@@ -34,6 +35,7 @@ public class TotalStarChecker : MonoBehaviour
         if (starsInLevel <= 0)
         {
             Debug.Log("Level done!");
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
         }
     }
 }

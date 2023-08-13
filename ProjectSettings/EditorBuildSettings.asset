@@ -15,9 +15,20 @@ EditorBuildSettings:
     path: Assets/Scenes/Credits.unity
     guid: 724b3c537f27dba4f9039e3604b660c8
   - enabled: 1
+    path: Assets/Scenes/ConstellationCreator.unity
+    guid: ddba6e7e980c6594a9bc52649a5f336a
+  - enabled: 1
     path: Assets/Scenes/Level1.unity
     guid: 2a10c1b014862c746895141c3a676b56
   - enabled: 1
+<<<<<<< HEAD
     path: Assets/Scenes/Constellation.unity
     guid: ddba6e7e980c6594a9bc52649a5f336a
+=======
+    path: Assets/Scenes/Level2.unity
+    guid: 549e85d122048fd4c816001f1481a37d
+  - enabled: 1
+    path: Assets/Scenes/Ending.unity
+    guid: ca5262862abd1c640b3d5efd9a7a5362
+>>>>>>> a56d98e7c930bc574438af8fba9ccbdb1384d730
   m_configObjects: {}
