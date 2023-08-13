@@ -11,27 +11,30 @@ public class ConstellationController : MonoBehaviour
     // UI
     public TextMeshProUGUI ConstellationName;
     public TextMeshProUGUI StarsLeft;
-    public TextMeshProUGUI CreateStars;
-    public TextMeshProUGUI CreateLines;
-    public GameObject EditorArea;
+    public GameObject CreateStars;
+    public GameObject CreateLines;
     public GameObject Cursor;
-    public GameObject Cursor2; // for Lines?
+    public GameObject Cursor2; // for Lines
+    public GameObject StarPrefab;
+    public List<GameObject> Stars;
+    public List<GameObject> Lines;
     public bool mode;
     public int starsMax;
-    
+
 
     // Start is called before the first frame update
     void Start()
     {
         mode = true;
-        CreateStars.enabled = false;
+        CreateStars.SetActive(false);
         starsMax = int.Parse(StarsLeft.text);
+        Stars = new List<GameObject>();
+        Lines = new List<GameObject>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        UpdateCursor();
         if (Input.GetKeyDown(KeyCode.Space)) // keybinding to place object
         { 
             if (mode)
@@ -40,44 +43,26 @@ public class ConstellationController : MonoBehaviour
                 {
                     PlaceStar();
                 }
-                else
-                {
-                    // display error/negative response
-                }
-            }
-            else
+            } else
             {
+                // if Cursor2 does not exist, and Cursor1 is hovering over a Star, Save Cursor2 as Cursor1
+                // if Cursor2 does exist and Cursor1 is hovering over a Star, PlaceLine() and Reset Cursor2
                 PlaceLine();
             }
         }
         
     }
 
-    public void UpdateCursor()
-    {
-        float horDirection = Input.GetAxis("Horizontal");
-        float verDirection = Input.GetAxis("Vertical");
-        if (horDirection != 0)
-        {
-            // adjust horizontal Cursor velocity/position
-            // prevent from going outside of bounds of EditorArea
-        }
-        if (verDirection != 0)
-        {
-            // adjust vertical Cursor velocity/position
-            // prevent from going outside of bounds of EditorArea
-        }
-    }
-
     public void PlaceStar()
     {
         StarsLeft.text = (int.Parse(StarsLeft.text) - 1).ToString();
+        Stars.Add(Instantiate(StarPrefab, Cursor.transform.position, Quaternion.identity));
         // place Star object on Graph or Image given Cursor position
     }
 
     public void PlaceLine()
     {
-        // Place Line Object between two points on Graph or Image given Cursor/Cursor2 position
+        // Place Line Object between Cursor1 and Cursor2 on Graph or Image given Cursor/Cursor2 position
     }
 
     public void ToggleMode()
@@ -85,12 +70,12 @@ public class ConstellationController : MonoBehaviour
         mode = !mode;
         if (mode)
         {
-            CreateStars.enabled = false;
-            CreateLines.enabled = true;
+            CreateStars.SetActive(false);
+            CreateLines.SetActive(true);
         } else
         {
-            CreateStars.enabled = true;
-            CreateLines.enabled = false;
+            CreateStars.SetActive(true);
+            CreateLines.SetActive(false);
         }
 
     }
@@ -98,6 +83,14 @@ public class ConstellationController : MonoBehaviour
     public void ClearAll()
     {
         StarsLeft.text = starsMax.ToString();
+        foreach (var obj in Stars)
+        {
+            Destroy(obj);
+        }
+        foreach (var obj in Lines)
+        {
+            Destroy(obj);
+        }
         // clear saved Graph or Image
     }
 
