@@ -7,6 +7,7 @@ public class PlayerController : MonoBehaviour
     static float maxHorizontalSpeed = 6f;
     static float jumpForce = 20f;
     static float jumpCooldown = 0.2f;
+    static float toggleCooldown = 0.2f;
 
     public LayerMask floorLayers;
     public Transform feet;
@@ -15,12 +16,17 @@ public class PlayerController : MonoBehaviour
     float remainingJumpCooldown = 0f;
     Animator animator;
     SpriteRenderer sprite;
+
+    bool controlling;   //true when controlling character, false when controlling black/white hole
+    bool justToggled = false;
+    float remainingToggleCooldown = 0f;
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
         sprite = GetComponent<SpriteRenderer>();
+        controlling = true;
     }
 
     bool IsGrounded()
@@ -38,11 +44,38 @@ public class PlayerController : MonoBehaviour
                 justJumped = false;
             }
         }
+
+        if (justToggled)
+        {
+            remainingToggleCooldown -= Time.deltaTime;
+            if (remainingToggleCooldown < 0f)
+            {
+                justToggled = false;
+            }
+        }
+
+        if (Input.GetAxis("ToggleControl") > 0 && !justToggled)
+        {
+            Debug.Log("toggling control");
+            justToggled = true;
+            remainingToggleCooldown = toggleCooldown;
+            if (controlling)
+            {
+                controlling = false;
+                animator.SetBool("inactive", true);
+            }
+            ToggleController.toggleEvent.Invoke();
+        }
     }
 
     // Update is called once per frame
     void FixedUpdate()
     {
+        if (!controlling)
+        {
+            return;
+        }
+
         bool grounded = IsGrounded();
         animator.SetBool("grounded", grounded);
         float direction = Input.GetAxis("Horizontal");
@@ -68,5 +101,18 @@ public class PlayerController : MonoBehaviour
             animator.SetBool("grounded", false);
         }
         animator.SetFloat("verticalSpeed", rb.velocity.y);
+    }
+
+
+    public void ActivatePlayer()
+    {
+        controlling = true;
+        animator.SetBool("inactive", false);
+    }
+
+    public void DeactivatePlayer()
+    {
+        controlling = false;
+        animator.SetBool("inactive", true);
     }
 }
