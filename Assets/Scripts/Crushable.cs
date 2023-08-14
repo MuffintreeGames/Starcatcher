@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class Crushable : MonoBehaviour
+public abstract class Crushable : Killable
 {
     // Start is called before the first frame update
     void Start()
@@ -18,6 +18,6 @@ public abstract class Crushable : MonoBehaviour
 
     public virtual void Crush()
     {
-
+        Kill();
     }
 }

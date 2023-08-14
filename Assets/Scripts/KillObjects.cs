@@ -18,7 +18,10 @@ public class KillObjects : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        Debug.Log(collision.gameObject.name + " hit killplane");
-        Destroy(collision.gameObject);
+        Killable killable = collision.GetComponent<Killable>();
+        if (killable != null)
+        {
+            killable.Kill();
+        }
     }
 }

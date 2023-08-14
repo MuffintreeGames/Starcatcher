@@ -59,9 +59,9 @@ public class ToggleController : MonoBehaviour
     {
         switch (placeInCycle)
         {
-            case 1: if (blackHole != null) { Debug.Log("deactivating black hole!"); blackHole.DeactivateBlackHole(); } break;
-            case 2: if (whiteHole != null) { Debug.Log("deactivating white hole!"); whiteHole.DeactivateWhiteHole(); } break;
-            case 0: if (player != null) { Debug.Log("deactivating player!"); player.DeactivatePlayer(); } break; 
+            case 1: if (blackHole != null) { blackHole.DeactivateBlackHole(); } break;
+            case 2: if (whiteHole != null) { whiteHole.DeactivateWhiteHole(); } break;
+            case 0: if (player != null) { player.DeactivatePlayer(); } break; 
         }
         placeInCycle++;
         if (placeInCycle > 2)
@@ -70,9 +70,9 @@ public class ToggleController : MonoBehaviour
         }
         switch (placeInCycle)
         {
-            case 1: if (blackHole != null) { Debug.Log("activating black hole!"); blackHole.ActivateBlackHole(); break; } else { placeInCycle = 2; goto case 2; };
-            case 2: if (whiteHole != null) { Debug.Log("activating white hole!"); whiteHole.ActivateWhiteHole(); break; } else { placeInCycle = 0; goto case 0; };
-            case 0: if (player != null) { Debug.Log("activating player!"); player.ActivatePlayer(); } break;
+            case 1: if (blackHole != null) { blackHole.ActivateBlackHole(); break; } else { placeInCycle = 2; goto case 2; };
+            case 2: if (whiteHole != null) { whiteHole.ActivateWhiteHole(); break; } else { placeInCycle = 0; goto case 0; };
+            case 0: if (player != null) { player.ActivatePlayer(); } break;
         }
     }
 }

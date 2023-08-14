@@ -1,11 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class PlayerController : Crushable
 {
     static float maxHorizontalSpeed = 6f;
-    static float jumpForce = 20f;
+    static float jumpForce = 14f;
     static float jumpCooldown = 0.2f;
     static float toggleCooldown = 0.2f;
 
@@ -21,6 +22,7 @@ public class PlayerController : Crushable
     Animator animator;
     SpriteRenderer sprite;
 
+    bool inputsDisabled = false;
     bool controlling;   //true when controlling character, false when controlling black/white hole
     bool justToggled = false;
     float remainingToggleCooldown = 0f;
@@ -31,6 +33,8 @@ public class PlayerController : Crushable
         animator = GetComponent<Animator>();
         sprite = GetComponent<SpriteRenderer>();
         controlling = true;
+        inputsDisabled = false;
+        Physics2D.queriesHitTriggers = false;
     }
 
     bool IsGrounded()
@@ -40,6 +44,11 @@ public class PlayerController : Crushable
 
     private void Update()
     {
+        if (LevelController.levelFailed)
+        {
+            inputsDisabled = true;
+        }
+
         if (justJumped)
         {
             remainingJumpCooldown -= Time.deltaTime;
@@ -58,7 +67,7 @@ public class PlayerController : Crushable
             }
         }
 
-        if (Input.GetAxis("ToggleControl") > 0 && !justToggled && (IsGrounded() || !controlling))
+        if (!inputsDisabled && Input.GetButtonDown("ToggleControl") && !justToggled && (IsGrounded() || !controlling))
         {
             Debug.Log("toggling control");
             justToggled = true;
@@ -75,7 +84,7 @@ public class PlayerController : Crushable
     // Update is called once per frame
     void FixedUpdate()
     {
-        if (!controlling)
+        if (!controlling || inputsDisabled)
         {
             return;
         }
@@ -101,11 +110,15 @@ public class PlayerController : Crushable
 
         if (Input.GetAxis("Jump") > 0 && grounded && !justJumped)
         {
-            Debug.Log("jumping");
-            rb.AddForce(transform.up * jumpForce, ForceMode2D.Impulse);
-            remainingJumpCooldown = jumpCooldown;
-            justJumped = true;
-            animator.SetBool("grounded", false);
+            Debug.Log("trying to jump");
+            if (grounded)
+            {
+                Debug.Log("jumping");
+                rb.AddForce(transform.up * jumpForce, ForceMode2D.Impulse);
+                remainingJumpCooldown = jumpCooldown;
+                justJumped = true;
+                animator.SetBool("grounded", false);
+            }
         }
         animator.SetFloat("verticalSpeed", rb.velocity.y);
     }
@@ -126,9 +139,15 @@ public class PlayerController : Crushable
         rb.sharedMaterial = null;
     }
 
-    public override void Crush()
+    /*public override void Crush()
     {
-        Debug.Log("player is crushed, level failed");
+        //Debug.Log("player is crushed, level failed");
+        //Destroy(gameObject);
+    }*/
+
+    public override void Kill()
+    {
+        LevelController.failLevelEvent.Invoke("Player died!");
         Destroy(gameObject);
     }
 }

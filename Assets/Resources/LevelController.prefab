@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 8473722775620319380}
   - component: {fileID: 3704896274419287879}
   - component: {fileID: 5462802524881700157}
+  - component: {fileID: 5839057221883139402}
   m_Layer: 0
   m_Name: LevelController
   m_TagString: Untagged
@@ -45,7 +46,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 45bf10849bd0d2646a16be7ef28f5af3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  starsInLevel: 1
 --- !u!114 &5462802524881700157
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -56,5 +56,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3f9d9e01f2b9f874ea22c70e91bd61fb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &5839057221883139402
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 66552856212967251}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0d828c72c00d3b444aeee530bf52d7e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 

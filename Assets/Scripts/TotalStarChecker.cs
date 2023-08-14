@@ -11,6 +11,7 @@ public class CollectStarEvent: UnityEvent
 public class TotalStarChecker : MonoBehaviour
 {
     public static CollectStarEvent CollectStar;
+    public static int firstLevelIndex = 4;
 
     int starsInLevel = 1;
     // Start is called before the first frame update
@@ -42,6 +43,7 @@ public class TotalStarChecker : MonoBehaviour
         if (starsInLevel <= 0)
         {
             Debug.Log("Level done!");
+            ProgressTracker.LevelCleared(SceneManager.GetActiveScene().buildIndex - firstLevelIndex);
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
         }
     }

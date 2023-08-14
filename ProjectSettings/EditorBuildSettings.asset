@@ -17,12 +17,54 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Constellation.unity
     guid: ddba6e7e980c6594a9bc52649a5f336a
-  - enabled: 1
-    path: Assets/Scenes/Level1.unity
-    guid: 2a10c1b014862c746895141c3a676b56
+  - enabled: 0
+    path: 
+    guid: 00000000000000000000000000000000
   - enabled: 1
     path: Assets/Scenes/Level1.unity
     guid: 549e85d122048fd4c816001f1481a37d
+  - enabled: 1
+    path: Assets/Scenes/Level2.unity
+    guid: 4c06d28ed282e8d44ab2823441e74d4b
+  - enabled: 1
+    path: Assets/Scenes/Level3.unity
+    guid: 1f87ef7d092b2ea448ce89e4df8c3a27
+  - enabled: 1
+    path: Assets/Scenes/Level4.unity
+    guid: 5ffdd8f933c1b6a4790a9a1e084de8a6
+  - enabled: 1
+    path: Assets/Scenes/Level5.unity
+    guid: 1808fad1d659e314a89d5a9224c0b271
+  - enabled: 1
+    path: Assets/Scenes/Level6.unity
+    guid: 399c90e0f7b150045ad0e295872a23fa
+  - enabled: 1
+    path: Assets/Scenes/Level7.unity
+    guid: ab8ad44c7652b6d44809afd3d2077f00
+  - enabled: 1
+    path: Assets/Scenes/Level8.unity
+    guid: 3d4a0edc14ffd9e4fb71050b16c199c4
+  - enabled: 1
+    path: Assets/Scenes/Level9.unity
+    guid: bed4c6be6861d8848987fb5d87a2c711
+  - enabled: 1
+    path: Assets/Scenes/Level10.unity
+    guid: 8e3bdd9c85b9f894c95eedf638618a68
+  - enabled: 1
+    path: Assets/Scenes/Level11.unity
+    guid: d6d89c473046fc34c8618c2fd3312a30
+  - enabled: 1
+    path: Assets/Scenes/Level12.unity
+    guid: f602ba51a0df97a429ce5dc15eb0eb9a
+  - enabled: 1
+    path: Assets/Scenes/Level13.unity
+    guid: cc793ae864b3ce84b8d16fca9866821e
+  - enabled: 1
+    path: Assets/Scenes/Level14.unity
+    guid: aa9076ef4a9508041a7467899b277f6a
+  - enabled: 1
+    path: Assets/Scenes/Level15.unity
+    guid: 95e5545095d0c984c8a8fc5c91e86075
   - enabled: 1
     path: Assets/Scenes/Ending.unity
     guid: ca5262862abd1c640b3d5efd9a7a5362

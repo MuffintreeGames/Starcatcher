@@ -16,9 +16,9 @@ public class StarPickup : Crushable
         
     }
 
-    public override void Crush()
+    public override void Kill()
     {
-        Debug.Log("star has been crushed, level failed!");
+        LevelController.failLevelEvent.Invoke("Star lost!");
         Destroy(gameObject);
     }
 
