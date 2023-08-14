@@ -3,16 +3,19 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using TMPro;
+using UnityEngine.UI;
 
 public class LevelSelectController : MonoBehaviour
 {
     public TextMeshProUGUI LevelName;
     public int levelUnlocked;
+    public GameObject Level1;
     // Start is called before the first frame update
     void Start()
     {
         LevelName.enabled = false;
         levelUnlocked = 1; // set this from GameState to be latest level unlocked.
+        Level1.GetComponent<Selectable>().Select();
     }
 
     // Update is called once per frame
@@ -20,7 +23,6 @@ public class LevelSelectController : MonoBehaviour
     {
         // code for when levelUnlocked is high enough to unlock/enable next level
         // if mouse hovers over a level, update level name object
-        // otherwise, load direct links below
     }
 
     public void LoadLevel1()
