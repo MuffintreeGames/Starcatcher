@@ -12,7 +12,7 @@ public class TotalStarChecker : MonoBehaviour
 {
     public static CollectStarEvent CollectStar;
 
-    public int starsInLevel = 1;
+    int starsInLevel = 1;
     // Start is called before the first frame update
     void Start()
     {
@@ -21,6 +21,13 @@ public class TotalStarChecker : MonoBehaviour
             CollectStar = new CollectStarEvent();
         }
         CollectStar.AddListener(CheckForLevelEnd);
+
+        GameObject[] starArray = GameObject.FindGameObjectsWithTag("Star");
+        starsInLevel = starArray.Length;
+        if (starsInLevel == 0)
+        {
+            Debug.LogError("No stars in level!");
+        }
     }
 
     // Update is called once per frame

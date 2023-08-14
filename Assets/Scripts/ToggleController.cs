@@ -11,9 +11,9 @@ public class ToggleEvent : UnityEvent
 public class ToggleController : MonoBehaviour
 {
     public static ToggleEvent toggleEvent;
-    public PlayerController player;
-    public BlackHoleController blackHole;
-    public WhiteHoleController whiteHole;
+    PlayerController player;
+    BlackHoleController blackHole;
+    WhiteHoleController whiteHole;
     
 
     int placeInCycle = 0;
@@ -25,6 +25,28 @@ public class ToggleController : MonoBehaviour
             toggleEvent = new ToggleEvent();
         }
         toggleEvent.AddListener(TriggerToggle);
+
+        GameObject playerObject = GameObject.Find("Starmond");
+        if (playerObject != null)
+        {
+            player = playerObject.GetComponent<PlayerController>();
+        } else
+        {
+            Debug.LogError("Failed to find player character");
+        }
+
+        GameObject blackHoleObject = GameObject.Find("BlackHole");
+        if (blackHoleObject != null)
+        {
+            blackHole = blackHoleObject.GetComponent<BlackHoleController>();
+        }
+
+        GameObject whiteHoleObject = GameObject.Find("WhiteHole");
+        if (whiteHoleObject != null)
+        {
+            whiteHole = whiteHoleObject.GetComponent<WhiteHoleController>();
+        }
+
     }
 
     // Update is called once per frame
