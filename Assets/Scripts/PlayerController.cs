@@ -58,7 +58,7 @@ public class PlayerController : Crushable
             }
         }
 
-        if (Input.GetAxis("ToggleControl") > 0 && !justToggled)
+        if (Input.GetAxis("ToggleControl") > 0 && !justToggled && IsGrounded())
         {
             Debug.Log("toggling control");
             justToggled = true;

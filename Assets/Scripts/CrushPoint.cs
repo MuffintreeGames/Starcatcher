@@ -28,6 +28,7 @@ public class CrushPoint : MonoBehaviour
         {
             inContact = true;
             contactingObjects++;
+            //CheckForCrush();
             if (collision.gameObject.name == "WhiteHole")
             {
                 Debug.Log("hit by white hole!");

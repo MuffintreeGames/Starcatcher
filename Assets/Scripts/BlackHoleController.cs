@@ -44,7 +44,7 @@ public class BlackHoleController : MonoBehaviour
         //Debug.Log("blackhole has detected trigger: " + collision.tag);
         if (collision.tag == "Particle")
         {
-            Debug.Log("disabling a particle");
+           // Debug.Log("disabling a particle");
             collision.GetComponent<BoxCollider2D>().enabled = false;
         }
     }
@@ -53,7 +53,7 @@ public class BlackHoleController : MonoBehaviour
     {
         if (collision.tag == "Particle")
         {
-            Debug.Log("re-enabling a particle");
+           // Debug.Log("re-enabling a particle");
             collision.GetComponent<BoxCollider2D>().enabled = true;
         }
     }
