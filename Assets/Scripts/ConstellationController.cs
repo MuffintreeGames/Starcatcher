@@ -3,10 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using TMPro;
+using UnityEngine.UI;
 
 public class ConstellationController : MonoBehaviour
 {
     // Objects for Constellation Stars/Lines, Graph or Image.
+    public GameObject Constellation;
+    bool isCapturing = false;
+    Texture2D currentCapture;
 
     // UI
     public TextMeshProUGUI ConstellationName;
@@ -16,11 +20,11 @@ public class ConstellationController : MonoBehaviour
     public GameObject Cursor;
     public GameObject Cursor2; // for Lines
     public GameObject StarPrefab;
+    public LineRenderer LineRenderer;
     public List<GameObject> Stars;
     public List<GameObject> Lines;
     public bool mode;
     public int starsMax;
-
 
     // Start is called before the first frame update
     void Start()
@@ -47,7 +51,7 @@ public class ConstellationController : MonoBehaviour
             {
                 // if Cursor2 does not exist, and Cursor1 is hovering over a Star, Save Cursor2 as Cursor1
                 // if Cursor2 does exist and Cursor1 is hovering over a Star, PlaceLine() and Reset Cursor2
-                PlaceLine();
+                // PlaceLine();
             }
         }
         
@@ -57,12 +61,38 @@ public class ConstellationController : MonoBehaviour
     {
         StarsLeft.text = (int.Parse(StarsLeft.text) - 1).ToString();
         Stars.Add(Instantiate(StarPrefab, Cursor.transform.position, Quaternion.identity));
+        PlaceLine();
+        Cursor2.transform.position = Cursor.transform.position;
+
         // place Star object on Graph or Image given Cursor position
+        if (Stars.Count == starsMax)
+        {
+            SaveConstellation();
+        }
     }
 
     public void PlaceLine()
     {
-        // Place Line Object between Cursor1 and Cursor2 on Graph or Image given Cursor/Cursor2 position
+        if (Stars.Count > 1)
+        {
+            CreateLine();
+        }
+    }
+
+    public void CreateLine()
+    {
+        
+        GameObject newLine = new GameObject();
+        newLine.AddComponent<LineRenderer>();
+        LineRenderer = newLine.GetComponent<LineRenderer>();
+        LineRenderer.material = new Material(Shader.Find("Sprites/Default"));
+        LineRenderer.startWidth = 0.05f;
+        LineRenderer.endWidth = 0.05f;
+        LineRenderer.startColor = Color.white;
+        LineRenderer.endColor = Color.white;
+        LineRenderer.SetPosition(0, Cursor2.transform.position);
+        LineRenderer.SetPosition(1, Cursor.transform.position);
+        Lines.Add(newLine);
     }
 
     public void ToggleMode()
@@ -87,28 +117,71 @@ public class ConstellationController : MonoBehaviour
         {
             Destroy(obj);
         }
+        Stars = new List<GameObject>();
         foreach (var obj in Lines)
         {
             Destroy(obj);
         }
+        Lines = new List<GameObject>();
         // clear saved Graph or Image
     }
 
     public void SaveConstellation()
     {
         // save Graph or Image of Constellation locally
+        ScreenshotToImage();
     }
 
 
     public void LoadNextLevel()
     {
-        SaveConstellation();
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        if (Stars.Count == starsMax)
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        }
     }
 
     public void LoadLevelSelect()
     {
-        SaveConstellation();
-        SceneManager.LoadScene("LevelSelect");
+        if (Stars.Count == starsMax)
+        {
+            SceneManager.LoadScene("LevelSelect");
+        }
     }
-}
+
+        IEnumerator CaptureRoutine()
+        {
+            yield return new WaitForEndOfFrame();
+            try
+            {
+                isCapturing = true;
+                currentCapture = new Texture2D(800, 800, TextureFormat.RGB24, false);
+                currentCapture.ReadPixels(new Rect(600, 25, 800, 800), 0, 0, false);
+                currentCapture.Apply();
+            }
+            catch (System.Exception e)
+            {
+                Debug.LogError("Screen capture failed!");
+                Debug.LogError(e.ToString());
+                isCapturing = false;
+            }
+        }
+
+        void LateUpdate()
+        {
+            if (isCapturing && currentCapture != null)
+            {
+                Sprite sprite = Sprite.Create(currentCapture, new Rect(0, 0, 800, 800), new Vector2(0, 0));
+                // SpriteRenderer spriteRenderer = Constellation.GetComponent<SpriteRenderer>();
+                //spriteRenderer.sprite = sprite;
+                Image constellationImage = Constellation.GetComponent<Image>();
+                constellationImage.sprite = sprite;
+                isCapturing = false;
+            }
+        }
+
+        public void ScreenshotToImage()
+        {
+            StartCoroutine(CaptureRoutine());
+        }
+    }

@@ -50,7 +50,7 @@ public class LevelSelectController : MonoBehaviour
 
     public void LoadConstellation1()
     {
-        SceneManager.LoadScene("Constellation1");
+        SceneManager.LoadScene("Constellation");
     }
 
     public void LoadLevel6()
