@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerController : MonoBehaviour
+public class PlayerController : Crushable
 {
     static float maxHorizontalSpeed = 6f;
     static float jumpForce = 20f;
@@ -13,6 +13,8 @@ public class PlayerController : MonoBehaviour
     public Transform rightFoot;
     public Transform leftFoot;
     public Transform center;
+    public PhysicsMaterial2D noFrictionMaterial;
+
     Rigidbody2D rb;
     bool justJumped = false;
     float remainingJumpCooldown = 0f;
@@ -113,6 +115,7 @@ public class PlayerController : MonoBehaviour
     {
         controlling = true;
         animator.SetBool("inactive", false);
+        rb.sharedMaterial = noFrictionMaterial;
     }
 
     public void DeactivatePlayer()
@@ -120,5 +123,12 @@ public class PlayerController : MonoBehaviour
         controlling = false;
         rb.velocity = new Vector2(0, rb.velocity.y);
         animator.SetBool("inactive", true);
+        rb.sharedMaterial = null;
+    }
+
+    public override void Crush()
+    {
+        Debug.Log("player is crushed, level failed");
+        Destroy(gameObject);
     }
 }
