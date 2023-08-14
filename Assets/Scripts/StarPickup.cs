@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class StarPickup : MonoBehaviour
+public class StarPickup : Crushable
 {
     // Start is called before the first frame update
     void Start()
@@ -14,6 +14,12 @@ public class StarPickup : MonoBehaviour
     void Update()
     {
         
+    }
+
+    public override void Crush()
+    {
+        Debug.Log("star has been crushed, level failed!");
+        Destroy(gameObject);
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
