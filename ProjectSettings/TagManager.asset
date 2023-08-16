@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Particle
   - Star
+  - music
   layers:
   - Default
   - TransparentFX
