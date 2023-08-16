@@ -1789,6 +1789,67 @@ BoxCollider2D:
   m_CorrespondingSourceObject: {fileID: 2066567173526297446, guid: 3a2ca776a6ef82e4797fca4ff09dfe1f, type: 3}
   m_PrefabInstance: {fileID: 672147750}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &70024736
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 3795452794666765024, guid: 0522c75846f3ce7439af7aa8fef7b210, type: 3}
+      propertyPath: m_Name
+      value: MusicController
+      objectReference: {fileID: 0}
+    - target: {fileID: 3795452794666765024, guid: 0522c75846f3ce7439af7aa8fef7b210, type: 3}
+      propertyPath: m_TagString
+      value: music
+      objectReference: {fileID: 0}
+    - target: {fileID: 6345863022563587144, guid: 0522c75846f3ce7439af7aa8fef7b210, type: 3}
+      propertyPath: m_RootOrder
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 6345863022563587144, guid: 0522c75846f3ce7439af7aa8fef7b210, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6345863022563587144, guid: 0522c75846f3ce7439af7aa8fef7b210, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6345863022563587144, guid: 0522c75846f3ce7439af7aa8fef7b210, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6345863022563587144, guid: 0522c75846f3ce7439af7aa8fef7b210, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6345863022563587144, guid: 0522c75846f3ce7439af7aa8fef7b210, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6345863022563587144, guid: 0522c75846f3ce7439af7aa8fef7b210, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6345863022563587144, guid: 0522c75846f3ce7439af7aa8fef7b210, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6345863022563587144, guid: 0522c75846f3ce7439af7aa8fef7b210, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6345863022563587144, guid: 0522c75846f3ce7439af7aa8fef7b210, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6345863022563587144, guid: 0522c75846f3ce7439af7aa8fef7b210, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 0522c75846f3ce7439af7aa8fef7b210, type: 3}
 --- !u!61 &70270451 stripped
 BoxCollider2D:
   m_CorrespondingSourceObject: {fileID: 3264610108003330116, guid: 3a2ca776a6ef82e4797fca4ff09dfe1f, type: 3}

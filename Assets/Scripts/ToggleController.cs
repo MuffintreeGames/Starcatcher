@@ -14,6 +14,8 @@ public class ToggleController : MonoBehaviour
     PlayerController player;
     BlackHoleController blackHole;
     WhiteHoleController whiteHole;
+
+    public AudioSource toggleSound;
     
 
     int placeInCycle = 0;
@@ -57,6 +59,10 @@ public class ToggleController : MonoBehaviour
 
     void TriggerToggle()    //swap object that player is controlling
     {
+        if (blackHole == null && whiteHole == null)
+        {
+            return;
+        }
         switch (placeInCycle)
         {
             case 1: if (blackHole != null) { blackHole.DeactivateBlackHole(); } break;
@@ -74,5 +80,6 @@ public class ToggleController : MonoBehaviour
             case 2: if (whiteHole != null) { whiteHole.ActivateWhiteHole(); break; } else { placeInCycle = 0; goto case 0; };
             case 0: if (player != null) { player.ActivatePlayer(); } break;
         }
+        toggleSound.Play();
     }
 }

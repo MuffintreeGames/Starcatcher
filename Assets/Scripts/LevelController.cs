@@ -14,6 +14,8 @@ public class LevelController : MonoBehaviour
     public static float resetTime = 1.5f;
     public static bool levelFailed = false;
 
+    public AudioSource levelFail;
+
     float resetTimeLeft = 10000f;
     bool resetting = false;
     //AsyncOperation asyncLoad;
@@ -42,10 +44,11 @@ public class LevelController : MonoBehaviour
 
     void FailLevel(string message)
     {
-        if (!resetting) //avoid failing level more than once
+        if (!resetting && !TotalStarChecker.levelCleared) //avoid failing level more than once
         {
             levelFailed = true;
             Debug.Log("Failed level: " + message);
+            levelFail.Play();
             resetTimeLeft = resetTime;
             resetting = true;
             StartCoroutine(ResetLevel());

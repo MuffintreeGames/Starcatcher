@@ -25,7 +25,7 @@ public class WhiteHoleController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (controlling && !LevelController.levelFailed)
+        if (controlling && !LevelController.levelFailed && !TotalStarChecker.levelCleared)
         {
             float horDirection = Input.GetAxis("Horizontal");
             float vertDirection = Input.GetAxis("Vertical");
