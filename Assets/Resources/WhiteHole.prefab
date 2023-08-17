@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 3800366316429061710}
   - component: {fileID: 3915819309020235591}
   - component: {fileID: 1482531105649652451}
-  m_Layer: 6
+  m_Layer: 10
   m_Name: WhiteHole
   m_TagString: Untagged
   m_Icon: {fileID: 0}

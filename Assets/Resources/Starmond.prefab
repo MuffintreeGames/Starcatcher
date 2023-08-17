@@ -132,7 +132,7 @@ MonoBehaviour:
   jumpSound: {fileID: 7091689342286028013}
   floorLayers:
     serializedVersion: 2
-    m_Bits: 64
+    m_Bits: 1088
   rightFoot: {fileID: 870812577699872990}
   leftFoot: {fileID: 1864931324036785886}
   center: {fileID: 7959709390235333484}

@@ -9,12 +9,14 @@ public class WhiteHoleController : MonoBehaviour
     public static float lowerBound = -4.65f;
     public static float leftBound = -8.5f;
     public static float rightBound = 8.5f;
-    public static float distanceToCenter = 0.5f;
+    public static float distanceToCenter = 0.4f;
     public static float marginForError = 0.00001f;
+    public static Vector2 extraColliderAdjustment = new Vector2(0, -0.04f);
 
     CircleCollider2D collider;
     Animator animator;
     bool controlling = false;
+    Vector3 movementDirection = Vector3.zero;
     // Start is called before the first frame update
     void Start()
     {
@@ -34,8 +36,9 @@ public class WhiteHoleController : MonoBehaviour
 
             float horDistance = movementSpeed * Time.deltaTime * horDirection;
             float vertDistance = movementSpeed * Time.deltaTime * vertDirection;
+            Debug.DrawRay((Vector2)transform.position + (collider.offset + extraColliderAdjustment) * transform.lossyScale, Vector2.right * movementSpeed, Color.red, 1f);
 
-            RaycastHit2D rightHit = Physics2D.Raycast((Vector2)transform.position + collider.offset, Vector2.right, movementSpeed, 1 << LayerMask.NameToLayer("Nogo"));
+            RaycastHit2D rightHit = Physics2D.Raycast((Vector2)transform.position + (collider.offset + extraColliderAdjustment) * transform.lossyScale, Vector2.right, movementSpeed, 1 << LayerMask.NameToLayer("Nogo"));
             if (rightHit)
             {
                 if ((rightHit.distance - (distanceToCenter * transform.lossyScale.x)) < Mathf.Max(horDistance, 0))
@@ -44,7 +47,7 @@ public class WhiteHoleController : MonoBehaviour
                 }
             }
 
-            RaycastHit2D leftHit = Physics2D.Raycast((Vector2)transform.position + collider.offset, Vector2.left, movementSpeed, 1 << LayerMask.NameToLayer("Nogo"));
+            RaycastHit2D leftHit = Physics2D.Raycast((Vector2)transform.position + (collider.offset + extraColliderAdjustment) * transform.lossyScale, Vector2.left, movementSpeed, 1 << LayerMask.NameToLayer("Nogo"));
             if (leftHit)
             {
                 if ((leftHit.distance - (distanceToCenter * transform.lossyScale.x)) < Mathf.Abs(Mathf.Min(horDistance, 0)))
@@ -53,7 +56,7 @@ public class WhiteHoleController : MonoBehaviour
                 }
             }
 
-            RaycastHit2D upHit = Physics2D.Raycast((Vector2)transform.position + collider.offset, Vector2.up, movementSpeed, 1 << LayerMask.NameToLayer("Nogo"));
+            RaycastHit2D upHit = Physics2D.Raycast((Vector2)transform.position + (collider.offset + extraColliderAdjustment) * transform.lossyScale, Vector2.up, movementSpeed, 1 << LayerMask.NameToLayer("Nogo"));
             if (upHit)
             {
                 if ((upHit.distance - (distanceToCenter * transform.lossyScale.y)) < Mathf.Max(0, vertDistance))
@@ -62,7 +65,7 @@ public class WhiteHoleController : MonoBehaviour
                 }
             }
 
-            RaycastHit2D downHit = Physics2D.Raycast((Vector2)transform.position + collider.offset, Vector2.down, movementSpeed, 1 << LayerMask.NameToLayer("Nogo"));
+            RaycastHit2D downHit = Physics2D.Raycast((Vector2)transform.position + (collider.offset + extraColliderAdjustment) * transform.lossyScale, Vector2.down, movementSpeed, 1 << LayerMask.NameToLayer("Nogo"));
             if (downHit)
             {
                 if ((downHit.distance - (distanceToCenter * transform.lossyScale.y)) < Mathf.Abs(Mathf.Min(vertDistance, 0)))
@@ -73,7 +76,7 @@ public class WhiteHoleController : MonoBehaviour
 
             Physics2D.queriesHitTriggers = false;
 
-            Vector3 movementDirection = new Vector3(horDistance, vertDistance, 0);
+            movementDirection = new Vector3(horDistance, vertDistance, 0);
 
             if (movementDirection.y + transform.position.y > upperBound)
             {
@@ -93,6 +96,7 @@ public class WhiteHoleController : MonoBehaviour
                 movementDirection.x = leftBound - transform.position.x;
             }
             transform.position += movementDirection;
+
         }
     }
 
@@ -107,4 +111,6 @@ public class WhiteHoleController : MonoBehaviour
         controlling = false;
         animator.SetBool("active", false);
     }
+
+    public Vector3 GetMovementDirection() { return movementDirection; }
 }

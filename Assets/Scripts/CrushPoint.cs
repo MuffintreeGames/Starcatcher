@@ -24,7 +24,7 @@ public class CrushPoint : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.layer == LayerMask.NameToLayer("Terrain") && !collision.isTrigger)
+        if ((collision.gameObject.layer == LayerMask.NameToLayer("Terrain") || collision.gameObject.layer == LayerMask.NameToLayer("MovingTerrain")) && !collision.isTrigger)
         {
             inContact = true;
             contactingObjects++;
@@ -39,7 +39,7 @@ public class CrushPoint : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision.gameObject.layer == LayerMask.NameToLayer("Terrain") && !collision.isTrigger)
+        if ((collision.gameObject.layer == LayerMask.NameToLayer("Terrain") || collision.gameObject.layer == LayerMask.NameToLayer("MovingTerrain")) && !collision.isTrigger)
         {
             contactingObjects--;
             if (contactingObjects == 0)

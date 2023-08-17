@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class StarPickup : Crushable
 {
+    public LayerMask floorLayers;
     // Start is called before the first frame update
     void Start()
     {
@@ -13,8 +14,25 @@ public class StarPickup : Crushable
     // Update is called once per frame
     void Update()
     {
-        
+        IsRidingWhiteHole();
     }
+
+    void IsRidingWhiteHole()
+    {
+        WhiteHoleController whiteHole = null;   //if we're standing on a white hole, set this to that white hole and get its velocity
+        RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector3.down, 1.3f, floorLayers.value);
+        if (hit.collider != null)
+        {
+            whiteHole = hit.collider.GetComponent<WhiteHoleController>();
+        }
+
+        if (whiteHole != null)
+        {
+            Debug.Log("star is sitting on a white hole!");
+            transform.position += whiteHole.GetMovementDirection();
+        }
+    }
+
 
     public override void Kill()
     {

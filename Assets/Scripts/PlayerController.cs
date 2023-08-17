@@ -28,6 +28,7 @@ public class PlayerController : Crushable
     bool justToggled = false;
     float remainingToggleCooldown = 0f;
     bool groundedLastFrame = true;  //used to check if we landed this frame
+    bool hasWonOrLost = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -41,7 +42,59 @@ public class PlayerController : Crushable
 
     bool IsGrounded()
     {
+        /*WhiteHoleController whiteHole = null;   //if we're standing on a white hole, set this to that white hole and get its velocity
+        RaycastHit2D rightHit = Physics2D.Raycast(rightFoot.position, -Vector3.up, 0.1f, floorLayers.value);
+        if (rightHit.collider != null) {
+            whiteHole = rightHit.collider.GetComponent<WhiteHoleController>();
+        }
+
+        RaycastHit2D leftHit = Physics2D.Raycast(leftFoot.position, -Vector3.up, 0.1f, floorLayers.value);
+        if (leftHit.collider != null)
+        {
+            whiteHole = leftHit.collider.GetComponent<WhiteHoleController>();
+        }
+
+        RaycastHit2D centerHit = Physics2D.Raycast(center.position, -Vector3.up, 0.1f, floorLayers.value);
+        if (centerHit.collider != null)
+        {
+            whiteHole = centerHit.collider.GetComponent<WhiteHoleController>();
+        }
+
+        if (whiteHole != null)
+        {
+            Debug.Log("I am standing on a white hole!");
+            transform.position += whiteHole.GetMovementDirection();
+        }*/
+        //bool returnValue = Physics2D.Raycast(rightFoot.position, -Vector3.up, 0.1f, floorLayers.value) || Physics2D.Raycast(leftFoot.position, -Vector3.up, 0.1f, floorLayers.value) || Physics2D.Raycast(center.position, -Vector3.up, 0.1f, floorLayers.value);
         return Physics2D.Raycast(rightFoot.position, -Vector3.up, 0.1f, floorLayers.value) || Physics2D.Raycast(leftFoot.position, -Vector3.up, 0.1f, floorLayers.value) || Physics2D.Raycast(center.position, -Vector3.up, 0.1f, floorLayers.value);
+    }
+
+    void IsRidingWhiteHole()
+    {
+        WhiteHoleController whiteHole = null;   //if we're standing on a white hole, set this to that white hole and get its velocity
+        RaycastHit2D rightHit = Physics2D.Raycast(rightFoot.position, -Vector3.up, 0.2f, floorLayers.value);
+        if (rightHit.collider != null)
+        {
+            whiteHole = rightHit.collider.GetComponent<WhiteHoleController>();
+        }
+
+        RaycastHit2D leftHit = Physics2D.Raycast(leftFoot.position, -Vector3.up, 0.2f, floorLayers.value);
+        if (leftHit.collider != null)
+        {
+            whiteHole = leftHit.collider.GetComponent<WhiteHoleController>();
+        }
+
+        RaycastHit2D centerHit = Physics2D.Raycast(center.position, -Vector3.up, 0.2f, floorLayers.value);
+        if (centerHit.collider != null)
+        {
+            whiteHole = centerHit.collider.GetComponent<WhiteHoleController>();
+        }
+
+        if (whiteHole != null)
+        {
+            Debug.Log("I am standing on a white hole!");
+            transform.position += whiteHole.GetMovementDirection();
+        }
     }
 
     private void Update()
@@ -49,6 +102,25 @@ public class PlayerController : Crushable
         if (LevelController.levelFailed || TotalStarChecker.levelCleared)
         {
             inputsDisabled = true;
+        }
+
+        if (!hasWonOrLost)
+        {
+            if (LevelController.levelFailed)
+            {
+                hasWonOrLost = true;
+                animator.SetBool("lost", true);
+            }
+            else if (TotalStarChecker.levelCleared)
+            {
+                hasWonOrLost = true;
+                Debug.Log("player has won level! Dance time!");
+                animator.SetBool("won", true);
+            }
+        } else
+        {
+            animator.SetBool("lost", false);
+            animator.SetBool("won", false);
         }
 
         if (justToggled)
@@ -67,6 +139,11 @@ public class PlayerController : Crushable
             remainingToggleCooldown = toggleCooldown;
             ToggleController.toggleEvent.Invoke();
         }
+
+        if (!LevelController.levelFailed && !TotalStarChecker.levelCleared)
+        {
+            IsRidingWhiteHole();
+        }
     }
 
     // Update is called once per frame
@@ -76,7 +153,7 @@ public class PlayerController : Crushable
         {
             rb.velocity = new Vector3(0, 0, 0);
             rb.gravityScale = 0;
-            animator.enabled = false;
+            //animator.enabled = false;
             return;
         }
 
