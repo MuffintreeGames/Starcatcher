@@ -76,7 +76,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1dea24f2082c388459fa2b1a3eafbec8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  parent: {fileID: 6481330118535586580}
+  parent: {fileID: 0}
   oppositePoints:
   - {fileID: 5159520337610837358}
   - {fileID: 6888996920396910883}
@@ -155,7 +155,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1dea24f2082c388459fa2b1a3eafbec8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  parent: {fileID: 6481330118535586580}
+  parent: {fileID: 0}
   oppositePoints:
   - {fileID: 6888996920396910883}
   - {fileID: 3359523541490510219}
@@ -235,7 +235,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1dea24f2082c388459fa2b1a3eafbec8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  parent: {fileID: 6481330118535586580}
+  parent: {fileID: 0}
   oppositePoints:
   - {fileID: 286756155123600798}
   - {fileID: 5159520337610837358}
@@ -249,11 +249,11 @@ GameObject:
   m_Component:
   - component: {fileID: 5608892617531192373}
   - component: {fileID: 4742368623885134161}
-  - component: {fileID: 6481330118535586580}
   - component: {fileID: 2246911149616929070}
   - component: {fileID: 4367533358577806611}
+  - component: {fileID: 2368023050580816115}
   m_Layer: 0
-  m_Name: Star
+  m_Name: StarParticle
   m_TagString: Star
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -268,7 +268,7 @@ Transform:
   m_GameObject: {fileID: 4317523817299033674}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 1.8239404, y: -0.36829215, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.2, y: 0.2, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1767140259727240190}
@@ -331,22 +331,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &6481330118535586580
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4317523817299033674}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7722b86cb646a3d4e982b5abb2b5ed9f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  floorLayers:
-    serializedVersion: 2
-    m_Bits: 1088
-  particle: {fileID: 4317523817299033674, guid: a2c53612c403e9943b812a3084988308, type: 3}
 --- !u!50 &2246911149616929070
 Rigidbody2D:
   serializedVersion: 4
@@ -420,6 +404,19 @@ PolygonCollider2D:
       - {x: -0.5409927, y: -0.92439705}
       - {x: -0.42, y: -0.85999995}
       - {x: -0.40463352, y: -0.78439695}
+--- !u!114 &2368023050580816115
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4317523817299033674}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0ee2872776d4a9a46ad91055dced1f82, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lifetime: 0.4
 --- !u!1 &6943778137943492953
 GameObject:
   m_ObjectHideFlags: 0
@@ -496,7 +493,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1dea24f2082c388459fa2b1a3eafbec8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  parent: {fileID: 6481330118535586580}
+  parent: {fileID: 0}
   oppositePoints:
   - {fileID: 1107702933840614894}
   - {fileID: 3359523541490510219}
@@ -576,7 +573,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1dea24f2082c388459fa2b1a3eafbec8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  parent: {fileID: 6481330118535586580}
+  parent: {fileID: 0}
   oppositePoints:
   - {fileID: 286756155123600798}
   - {fileID: 1107702933840614894}

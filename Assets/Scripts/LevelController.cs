@@ -35,10 +35,15 @@ public class LevelController : MonoBehaviour
             resetTimeLeft -= Time.deltaTime;
         }
 
-        if (Input.GetButtonDown("Reset"))
+        if (Input.GetButtonDown("Reset") && !TotalStarChecker.levelCleared)
         {
             resetTimeLeft = 0f;
             StartCoroutine(ResetLevel());
+        }
+
+        if (Input.GetButtonDown("Cancel") && !TotalStarChecker.levelCleared)
+        {
+            SceneManager.LoadScene("LevelSelect");
         }
     }
 

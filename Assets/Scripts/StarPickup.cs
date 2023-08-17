@@ -5,6 +5,7 @@ using UnityEngine;
 public class StarPickup : Crushable
 {
     public LayerMask floorLayers;
+    public GameObject particle;
     // Start is called before the first frame update
     void Start()
     {
@@ -46,6 +47,9 @@ public class StarPickup : Crushable
         {
             Debug.Log("player hit star!");
             TotalStarChecker.CollectStar.Invoke();
+            GameObject spawnedParticle = Instantiate(particle, transform.position, Quaternion.identity);
+            spawnedParticle.GetComponent<Rigidbody2D>().AddForce(new Vector3(100f, 200f, 0f));
+            spawnedParticle.GetComponent<Rigidbody2D>().AddTorque(20f);
             Destroy(gameObject);
         }
     }
