@@ -13,6 +13,9 @@ public class ConstellationController : MonoBehaviour
     public TextMeshProUGUI ConstellationName;
     public TextMeshProUGUI StarsLeft;
     public TextMeshProUGUI Finished;
+    public Image Finished1;
+    public Image Finished2;
+    public Image Finished3;
     public GameObject Cursor;
     public GameObject Cursor2; // for Lines
     public GameObject StarPrefab;
@@ -20,7 +23,7 @@ public class ConstellationController : MonoBehaviour
     public List<GameObject> Stars;
     public List<GameObject> Lines;
     public int starsMax;
-    public bool inGame;
+    public bool inGame; //set this when coming from in game vs coming from level select
 
     // Start is called before the first frame update
     void Start()
@@ -29,12 +32,15 @@ public class ConstellationController : MonoBehaviour
         Stars = new List<GameObject>();
         Lines = new List<GameObject>();
         Finished.enabled = false;
+        Finished1.enabled = false;
+        Finished2.enabled = false;
+        Finished3.enabled = false;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space)) // keybinding to place object
+        if (Input.GetKeyDown(KeyCode.Z)) // keybinding to place object
         { 
             if (Stars.Count < starsMax)
             {
@@ -42,7 +48,7 @@ public class ConstellationController : MonoBehaviour
             }
         }
 
-        if (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.KeypadEnter)) // keybinding to place object
+        if (Input.GetKeyDown(KeyCode.Space)) // keybinding to place object
         {
             if (inGame)
             {
@@ -71,6 +77,9 @@ public class ConstellationController : MonoBehaviour
         {
             SaveConstellation();
             Finished.enabled = true;
+            Finished1.enabled = true;
+            Finished2.enabled = true;
+            Finished3.enabled = true;
         }
     }
 
@@ -111,6 +120,9 @@ public class ConstellationController : MonoBehaviour
         }
         Lines = new List<GameObject>();
         Finished.enabled = false;
+        Finished1.enabled = false;
+        Finished2.enabled = false;
+        Finished3.enabled = false;
     }
 
     public void SaveConstellation()
@@ -141,8 +153,8 @@ public class ConstellationController : MonoBehaviour
             try
             {
                 isCapturing = true;
-                currentCapture = new Texture2D(800, 800, TextureFormat.RGB24, false);
-                currentCapture.ReadPixels(new Rect(575, 25, 800, 800), 0, 0, false);
+                currentCapture = new Texture2D(400, 400, TextureFormat.RGB24, false);
+                currentCapture.ReadPixels(new Rect(275, 10, 400, 400), 0, 0, false);
                 currentCapture.Apply();
             }
             catch (System.Exception e)
@@ -157,7 +169,7 @@ public class ConstellationController : MonoBehaviour
         {
             if (isCapturing && currentCapture != null)
             {
-                Sprite sprite = Sprite.Create(currentCapture, new Rect(0, 0, 800, 800), new Vector2(0, 0));
+                Sprite sprite = Sprite.Create(currentCapture, new Rect(0, 0, 400, 400), new Vector2(0, 0));
                 Image constellationImage = Constellation.GetComponent<Image>();
                 constellationImage.sprite = sprite;
                 isCapturing = false;

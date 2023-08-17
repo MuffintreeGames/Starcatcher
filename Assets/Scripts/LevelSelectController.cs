@@ -8,14 +8,13 @@ using UnityEngine.UI;
 public class LevelSelectController : MonoBehaviour
 {
     public TextMeshProUGUI LevelName;
-    public int levelUnlocked;
     public GameObject Level1;
+    public ProgressTracker levels;
     // Start is called before the first frame update
     void Start()
     {
         LevelName.enabled = false;
-        levelUnlocked = 1; // set this from GameState to be latest level unlocked.
-        Level1.GetComponent<Selectable>().Select();
+        //Level1.GetComponent<Selectable>().Select(); - keyboard navigable level select
     }
 
     // Update is called once per frame
