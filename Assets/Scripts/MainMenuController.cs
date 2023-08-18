@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
 
 public class MainMenuController : MonoBehaviour
@@ -14,7 +15,7 @@ public class MainMenuController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        Debug.Log("currently selected object: " + EventSystem.current.currentSelectedGameObject);
     }
 
     public void LoadGame()
