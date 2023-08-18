@@ -8,15 +8,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/MainMenu.unity
     guid: 2cda990e2423bbf4892e6590ba056729
-  - enabled: 0
-    path: Assets/Scenes/LevelSelect.unity
-    guid: 8d8040a1cb941f84892efa2ff2021e7c
   - enabled: 1
     path: Assets/Scenes/Credits.unity
     guid: 724b3c537f27dba4f9039e3604b660c8
-  - enabled: 1
-    path: Assets/Scenes/Constellation.unity
-    guid: ddba6e7e980c6594a9bc52649a5f336a
   - enabled: 0
     path: 
     guid: 00000000000000000000000000000000
@@ -36,6 +30,9 @@ EditorBuildSettings:
     path: Assets/Scenes/Level5.unity
     guid: 1808fad1d659e314a89d5a9224c0b271
   - enabled: 1
+    path: Assets/Scenes/Constellation.unity
+    guid: ddba6e7e980c6594a9bc52649a5f336a
+  - enabled: 1
     path: Assets/Scenes/Level6.unity
     guid: 399c90e0f7b150045ad0e295872a23fa
   - enabled: 1
@@ -50,6 +47,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Level10.unity
     guid: 8e3bdd9c85b9f894c95eedf638618a68
+  - enabled: 1
+    path: Assets/Scenes/Constellation2.unity
+    guid: f43b50610ef9d4846bcd4043b9193bf5
   - enabled: 1
     path: Assets/Scenes/Level11.unity
     guid: d6d89c473046fc34c8618c2fd3312a30
@@ -66,6 +66,9 @@ EditorBuildSettings:
     path: Assets/Scenes/Level15.unity
     guid: 95e5545095d0c984c8a8fc5c91e86075
   - enabled: 1
+    path: Assets/Scenes/Constellation3.unity
+    guid: 1bf5e84d1b3250647bf54d5ddbf70286
+  - enabled: 1
     path: Assets/Scenes/Level16.unity
     guid: ee4bbd41c09bd1f42ad4ffa2dbe40025
   - enabled: 1
@@ -81,6 +84,18 @@ EditorBuildSettings:
     path: Assets/Scenes/Level20.unity
     guid: b18ab6e4554f9c5428c2d3927522785a
   - enabled: 1
+    path: Assets/Scenes/Constellation4.unity
+    guid: aacc0c7133736d047bb10c8265a4c96e
+  - enabled: 1
     path: Assets/Scenes/Ending.unity
     guid: ca5262862abd1c640b3d5efd9a7a5362
+  - enabled: 1
+    path: Assets/Scenes/Constellation5.unity
+    guid: 198c56c0da2649e47b8184c152932cb9
+  - enabled: 1
+    path: Assets/Scenes/Constellation6.unity
+    guid: 10a0a4f16b0162a4db8110508af01d5c
+  - enabled: 1
+    path: Assets/Scenes/Constellation7.unity
+    guid: 2e6aacedb5dfac7458114c55db77ad95
   m_configObjects: {}

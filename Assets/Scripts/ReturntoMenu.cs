@@ -14,7 +14,7 @@ public class ReturntoMenu : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space)) // keybinding to place object
+        if (Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.KeypadEnter) || Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.Escape)) // keybinding to place object
         { 
             SceneManager.LoadScene("MainMenu");
         }

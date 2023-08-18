@@ -11,7 +11,7 @@ public class CollectStarEvent: UnityEvent
 public class TotalStarChecker : MonoBehaviour
 {
     public static CollectStarEvent CollectStar;
-    public static int firstLevelIndex = 3;
+    public static int firstLevelIndex = 2;
     public static float advanceTime = 1.5f;
     public static bool levelCleared = false;
 
@@ -59,7 +59,7 @@ public class TotalStarChecker : MonoBehaviour
             advanceTimeLeft = advanceTime;
             advancing = true;
             levelCleared = true;
-            ProgressTracker.LevelCleared(SceneManager.GetActiveScene().buildIndex - firstLevelIndex);
+            ProgressTracker.LevelCleared(ProgressTracker.levelsClearedInt + 1);
             StartCoroutine(GoToNextLevel());
         } else
         {

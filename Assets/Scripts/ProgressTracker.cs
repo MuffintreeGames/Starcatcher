@@ -5,7 +5,7 @@ using UnityEngine;
 public class ProgressTracker : MonoBehaviour
 {
     public static int numOfLevels = 40;
-    public static bool[] levelsCleared;
+    public static int levelsClearedInt = 0;
     // Start is called before the first frame update
     void Start()
     {
@@ -20,14 +20,6 @@ public class ProgressTracker : MonoBehaviour
 
     public static void LevelCleared(int level)
     {
-        if (levelsCleared == null)
-        {
-            levelsCleared = new bool[numOfLevels];
-        }
-        levelsCleared[level] = true;
-        for (int i = 0; i < numOfLevels; i++)
-        {
-            Debug.Log(i + ": " + levelsCleared[i]);
-        }
+        levelsClearedInt = level;
     }
 }

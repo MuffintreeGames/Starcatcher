@@ -10,6 +10,7 @@ public class ConstellationController : MonoBehaviour
     public GameObject Constellation;
     bool isCapturing = false;
     Texture2D currentCapture;
+    public Sprite finalSprite;
     public TextMeshProUGUI ConstellationName;
     public TextMeshProUGUI StarsLeft;
     public TextMeshProUGUI Finished;
@@ -23,6 +24,8 @@ public class ConstellationController : MonoBehaviour
     public List<GameObject> Stars;
     public List<GameObject> Lines;
     public int starsMax;
+
+    public static List<Sprite> ListConstellations = new();
 
     // Start is called before the first frame update
     void Start()
@@ -43,7 +46,15 @@ public class ConstellationController : MonoBehaviour
         { 
             if (Stars.Count < starsMax)
             {
-                PlaceStar();
+                PlaceStar(true);
+            }
+        }
+
+        if (Input.GetKeyDown(KeyCode.X)) // keybinding to place object
+        {
+            if (Stars.Count < starsMax)
+            {
+                PlaceStar(false);
             }
         }
 
@@ -52,18 +63,18 @@ public class ConstellationController : MonoBehaviour
             LoadNextLevel();
         }
 
-        if (Input.GetKeyDown(KeyCode.X)) // keybinding to place object
+        if (Input.GetKeyDown(KeyCode.C)) // keybinding to place object
         {
             ClearAll();
         }
 
     }
 
-    public void PlaceStar()
+    public void PlaceStar(bool line)
     {
         StarsLeft.text = (int.Parse(StarsLeft.text) - 1).ToString();
         Stars.Add(Instantiate(StarPrefab, Cursor.transform.position, Quaternion.identity));
-        PlaceLine();
+        if (line) PlaceLine();
         Cursor2.transform.position = Cursor.transform.position;
 
         if (Stars.Count == starsMax)
@@ -128,6 +139,7 @@ public class ConstellationController : MonoBehaviour
     {
         if (Stars.Count == starsMax)
         {
+            ListConstellations.Add(finalSprite);
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
         }
     }
@@ -155,8 +167,7 @@ public class ConstellationController : MonoBehaviour
             if (isCapturing && currentCapture != null)
             {
                 Sprite sprite = Sprite.Create(currentCapture, new Rect(0, 0, 400, 400), new Vector2(0, 0));
-                Image constellationImage = Constellation.GetComponent<Image>();
-                constellationImage.sprite = sprite;
+                finalSprite = sprite;
                 isCapturing = false;
             }
         }

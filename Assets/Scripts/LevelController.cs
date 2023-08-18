@@ -43,7 +43,7 @@ public class LevelController : MonoBehaviour
 
         if (Input.GetButtonDown("Cancel") && !TotalStarChecker.levelCleared)
         {
-            SceneManager.LoadScene("LevelSelect");
+            SceneManager.LoadScene("MainMenu");
         }
     }
 
