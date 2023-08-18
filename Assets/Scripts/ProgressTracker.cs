@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ProgressTracker : MonoBehaviour
 {
-    public static int numOfLevels = 20;
+    public static int numOfLevels = 40;
     public static bool[] levelsCleared;
     // Start is called before the first frame update
     void Start()

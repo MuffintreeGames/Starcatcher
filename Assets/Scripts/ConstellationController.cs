@@ -23,7 +23,6 @@ public class ConstellationController : MonoBehaviour
     public List<GameObject> Stars;
     public List<GameObject> Lines;
     public int starsMax;
-    public bool inGame; //set this when coming from in game vs coming from level select
 
     // Start is called before the first frame update
     void Start()
@@ -50,13 +49,7 @@ public class ConstellationController : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Space)) // keybinding to place object
         {
-            if (inGame)
-            {
-                LoadNextLevel();
-            } else
-            {
-                LoadLevelSelect();
-            }
+            LoadNextLevel();
         }
 
         if (Input.GetKeyDown(KeyCode.X)) // keybinding to place object
@@ -136,14 +129,6 @@ public class ConstellationController : MonoBehaviour
         if (Stars.Count == starsMax)
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
-        }
-    }
-
-    public void LoadLevelSelect()
-    {
-        if (Stars.Count == starsMax)
-        {
-            SceneManager.LoadScene("LevelSelect");
         }
     }
 

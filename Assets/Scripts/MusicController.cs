@@ -35,7 +35,7 @@ public class MusicController : MonoBehaviour
     void UpdateMusic(Scene current, Scene next)
     {
         int newMusicChoice;
-        if (next.name.Contains("Level") && next.name != "LevelSelect")
+        if (next.name.Contains("Level") && !next.name.Contains("LevelSelect"))
         {
             Debug.Log("entering level, should play level music");
             newMusicChoice = 1;

@@ -27,12 +27,6 @@ public class MainMenuController : MonoBehaviour
         SceneManager.LoadScene("Credits");
     }
 
-    public void LoadLevelSelect()
-    {
-
-        SceneManager.LoadScene("LevelSelect");
-    }
-
     public void ReturnToMenu()
     {
         SceneManager.LoadScene("MainMenu");
