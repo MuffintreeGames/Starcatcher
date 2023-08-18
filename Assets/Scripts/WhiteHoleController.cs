@@ -110,6 +110,7 @@ public class WhiteHoleController : MonoBehaviour
     {
         controlling = false;
         animator.SetBool("active", false);
+        movementDirection = Vector3.zero;
     }
 
     public Vector3 GetMovementDirection() { return movementDirection; }

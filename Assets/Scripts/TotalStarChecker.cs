@@ -11,7 +11,7 @@ public class CollectStarEvent: UnityEvent
 public class TotalStarChecker : MonoBehaviour
 {
     public static CollectStarEvent CollectStar;
-    public static int firstLevelIndex = 4;
+    public static int firstLevelIndex = 3;
     public static float advanceTime = 1.5f;
     public static bool levelCleared = false;
 

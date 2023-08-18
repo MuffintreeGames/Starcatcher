@@ -9,17 +9,21 @@ public class PlayerController : Crushable
     static float jumpForce = 14f;
     static float jumpCooldown = 0.2f;
     static float toggleCooldown = 0.2f;
+    static float timeUntilPoofOut = 0.8f;
 
     public AudioSource jumpSound;
+    public AudioSource poofSound;
     public LayerMask floorLayers;
     public Transform rightFoot;
     public Transform leftFoot;
     public Transform center;
     public PhysicsMaterial2D noFrictionMaterial;
+    public GameObject particle;
 
     Rigidbody2D rb;
     //bool justJumped = false;
     float remainingJumpCooldown = 0f;
+    float remainingPoofOutTime = 0f;
     Animator animator;
     SpriteRenderer sprite;
 
@@ -42,30 +46,6 @@ public class PlayerController : Crushable
 
     bool IsGrounded()
     {
-        /*WhiteHoleController whiteHole = null;   //if we're standing on a white hole, set this to that white hole and get its velocity
-        RaycastHit2D rightHit = Physics2D.Raycast(rightFoot.position, -Vector3.up, 0.1f, floorLayers.value);
-        if (rightHit.collider != null) {
-            whiteHole = rightHit.collider.GetComponent<WhiteHoleController>();
-        }
-
-        RaycastHit2D leftHit = Physics2D.Raycast(leftFoot.position, -Vector3.up, 0.1f, floorLayers.value);
-        if (leftHit.collider != null)
-        {
-            whiteHole = leftHit.collider.GetComponent<WhiteHoleController>();
-        }
-
-        RaycastHit2D centerHit = Physics2D.Raycast(center.position, -Vector3.up, 0.1f, floorLayers.value);
-        if (centerHit.collider != null)
-        {
-            whiteHole = centerHit.collider.GetComponent<WhiteHoleController>();
-        }
-
-        if (whiteHole != null)
-        {
-            Debug.Log("I am standing on a white hole!");
-            transform.position += whiteHole.GetMovementDirection();
-        }*/
-        //bool returnValue = Physics2D.Raycast(rightFoot.position, -Vector3.up, 0.1f, floorLayers.value) || Physics2D.Raycast(leftFoot.position, -Vector3.up, 0.1f, floorLayers.value) || Physics2D.Raycast(center.position, -Vector3.up, 0.1f, floorLayers.value);
         return Physics2D.Raycast(rightFoot.position, -Vector3.up, 0.1f, floorLayers.value) || Physics2D.Raycast(leftFoot.position, -Vector3.up, 0.1f, floorLayers.value) || Physics2D.Raycast(center.position, -Vector3.up, 0.1f, floorLayers.value);
     }
 
@@ -104,6 +84,15 @@ public class PlayerController : Crushable
             inputsDisabled = true;
         }
 
+        if (remainingPoofOutTime > 0)
+        {
+            remainingPoofOutTime -= Time.deltaTime;
+            if (remainingPoofOutTime <= 0)
+            {
+                PoofOut();
+            }
+        }
+
         if (!hasWonOrLost)
         {
             if (LevelController.levelFailed)
@@ -116,6 +105,7 @@ public class PlayerController : Crushable
                 hasWonOrLost = true;
                 Debug.Log("player has won level! Dance time!");
                 animator.SetBool("won", true);
+                remainingPoofOutTime = timeUntilPoofOut;
             }
         } else
         {
@@ -214,15 +204,23 @@ public class PlayerController : Crushable
         rb.sharedMaterial = null;
     }
 
-    /*public override void Crush()
-    {
-        //Debug.Log("player is crushed, level failed");
-        //Destroy(gameObject);
-    }*/
-
     public override void Kill()
     {
         LevelController.failLevelEvent.Invoke("Player died!");
         Destroy(gameObject);
+    }
+
+    void PoofOut()
+    {
+        sprite.enabled = false;
+        poofSound.Play();
+
+        GameObject leftParticle = GameObject.Instantiate(particle, transform.position, Quaternion.identity);
+        leftParticle.GetComponent<Rigidbody2D>().AddForce(new Vector3(-100f, 200f, 0f));
+        leftParticle.GetComponent<Rigidbody2D>().AddTorque(20f);
+
+        GameObject rightParticle = GameObject.Instantiate(particle, transform.position, Quaternion.identity);
+        rightParticle.GetComponent<Rigidbody2D>().AddForce(new Vector3(100f, 200f, 0f));
+        rightParticle.GetComponent<Rigidbody2D>().AddTorque(20f);
     }
 }
