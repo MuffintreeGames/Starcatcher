@@ -67,6 +67,6 @@ public class MusicController : MonoBehaviour
             case 2: currentAudioSource = constellationMusic; break;
         }
         currentMusicChoice = newMusicChoice;
-        currentAudioSource.Play();
+        if (currentAudioSource != null) currentAudioSource.Play();
     }
 }
