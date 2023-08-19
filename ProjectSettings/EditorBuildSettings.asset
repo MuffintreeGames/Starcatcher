@@ -49,59 +49,104 @@ EditorBuildSettings:
     guid: bed4c6be6861d8848987fb5d87a2c711
   - enabled: 1
     path: Assets/Scenes/Level10.unity
-    guid: 8e3bdd9c85b9f894c95eedf638618a68
+    guid: 852db1168da5cd84e83892818cac9d1e
   - enabled: 1
     path: Assets/Scenes/Constellation2.unity
     guid: f43b50610ef9d4846bcd4043b9193bf5
   - enabled: 1
-    path: Assets/Scenes/BadgePage2.unity
-    guid: f8937462e1a34294aa1d601ac3afa911
+    path: Assets/Scenes/BadgePage 2.unity
+    guid: eedc2b313b5f0c645be20f9a5b814e99
   - enabled: 1
     path: Assets/Scenes/Level11.unity
     guid: d6d89c473046fc34c8618c2fd3312a30
   - enabled: 1
     path: Assets/Scenes/Level12.unity
-    guid: f602ba51a0df97a429ce5dc15eb0eb9a
+    guid: 8e3bdd9c85b9f894c95eedf638618a68
+  - enabled: 0
+    path: 
+    guid: 00000000000000000000000000000000
   - enabled: 1
     path: Assets/Scenes/Level13.unity
-    guid: cc793ae864b3ce84b8d16fca9866821e
+    guid: f602ba51a0df97a429ce5dc15eb0eb9a
   - enabled: 1
     path: Assets/Scenes/Level14.unity
-    guid: aa9076ef4a9508041a7467899b277f6a
+    guid: cc793ae864b3ce84b8d16fca9866821e
   - enabled: 1
     path: Assets/Scenes/Level15.unity
-    guid: 95e5545095d0c984c8a8fc5c91e86075
+    guid: aa9076ef4a9508041a7467899b277f6a
   - enabled: 1
     path: Assets/Scenes/Constellation3.unity
     guid: 1bf5e84d1b3250647bf54d5ddbf70286
   - enabled: 1
+    path: Assets/Scenes/BadgePage 3.unity
+    guid: e76bc2029dbbd8a4493e96060ea0a3ec
+  - enabled: 1
     path: Assets/Scenes/Level16.unity
-    guid: ee4bbd41c09bd1f42ad4ffa2dbe40025
+    guid: 95e5545095d0c984c8a8fc5c91e86075
   - enabled: 1
     path: Assets/Scenes/Level17.unity
-    guid: 552b5391108310749ae7a91a87535c8c
+    guid: ee4bbd41c09bd1f42ad4ffa2dbe40025
   - enabled: 1
     path: Assets/Scenes/Level18.unity
-    guid: 92eec1cbcf9ec94408aa95a058cb9a47
+    guid: 552b5391108310749ae7a91a87535c8c
   - enabled: 1
     path: Assets/Scenes/Level19.unity
-    guid: ce0387d2ede364f4389cc02b3a109a86
+    guid: 92eec1cbcf9ec94408aa95a058cb9a47
   - enabled: 1
     path: Assets/Scenes/Level20.unity
-    guid: b18ab6e4554f9c5428c2d3927522785a
+    guid: ae9869e0467cdbd4991334d80aa14f20
   - enabled: 1
     path: Assets/Scenes/Constellation4.unity
     guid: aacc0c7133736d047bb10c8265a4c96e
   - enabled: 1
-    path: Assets/Scenes/Ending.unity
-    guid: ca5262862abd1c640b3d5efd9a7a5362
+    path: Assets/Scenes/BadgePage 4.unity
+    guid: 0603dc65f11d8d944ad2495ccc1645b5
+  - enabled: 0
+    path: Assets/Scenes/Constellation7.unity
+    guid: 2e6aacedb5dfac7458114c55db77ad95
+  - enabled: 1
+    path: Assets/Scenes/Level21.unity
+    guid: 191e62f5173693b4a9c905bfd0d82321
+  - enabled: 1
+    path: Assets/Scenes/Level22.unity
+    guid: 731acae753a72f144ac5e495ee5252de
+  - enabled: 1
+    path: Assets/Scenes/Level23.unity
+    guid: b0cf453fda2b9eb4f910dba174610c02
+  - enabled: 1
+    path: Assets/Scenes/Level24.unity
+    guid: ead5859ec97347e48aeb5ff0d8833f4f
+  - enabled: 1
+    path: Assets/Scenes/Level25.unity
+    guid: d20a6d20403ee1744a4faaa166836b77
   - enabled: 1
     path: Assets/Scenes/Constellation5.unity
     guid: 198c56c0da2649e47b8184c152932cb9
   - enabled: 1
+    path: Assets/Scenes/BadgePage 5.unity
+    guid: c2409b1587cb1bf48ba9a338a29a8f10
+  - enabled: 1
+    path: Assets/Scenes/Level26.unity
+    guid: 72f9a09a97fd50549bfdc0c30634a13a
+  - enabled: 1
+    path: Assets/Scenes/Level27.unity
+    guid: ce0387d2ede364f4389cc02b3a109a86
+  - enabled: 1
+    path: Assets/Scenes/Level28.unity
+    guid: 964662b567f7bc243ba99aa8ac1dec59
+  - enabled: 1
+    path: Assets/Scenes/Level29.unity
+    guid: b18ab6e4554f9c5428c2d3927522785a
+  - enabled: 1
+    path: Assets/Scenes/Level30.unity
+    guid: 05c6f6fa758f3214a8ce1a813c3b2e0d
+  - enabled: 1
     path: Assets/Scenes/Constellation6.unity
     guid: 10a0a4f16b0162a4db8110508af01d5c
-  - enabled: 0
-    path: Assets/Scenes/Constellation7.unity
-    guid: 2e6aacedb5dfac7458114c55db77ad95
+  - enabled: 1
+    path: Assets/Scenes/BadgePage 6.unity
+    guid: fe618aa528bd3584c9ae1574b62938ac
+  - enabled: 1
+    path: Assets/Scenes/Ending.unity
+    guid: ca5262862abd1c640b3d5efd9a7a5362
   m_configObjects: {}
