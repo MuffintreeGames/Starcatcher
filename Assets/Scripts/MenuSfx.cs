@@ -7,6 +7,7 @@ public class MenuSfx : MonoBehaviour
 {
     public AudioSource highlightSound;
     public AudioSource selectSound;
+    public AudioSource levelWin;
 
     // Start is called before the first frame update
     void Start()
@@ -27,7 +28,11 @@ public class MenuSfx : MonoBehaviour
 
     public void ButtonSelected()
     {
-        //highlightSound.Play();
         selectSound.Play();
+    }
+
+    public void LevelWin()
+    {
+        if (levelWin != null) levelWin.Play();
     }
 }

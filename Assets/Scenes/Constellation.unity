@@ -1974,9 +1974,21 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 264588831386101464, guid: 0522c75846f3ce7439af7aa8fef7b210, type: 3}
+      propertyPath: levelWin
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 686162125948557437, guid: 0522c75846f3ce7439af7aa8fef7b210, type: 3}
       propertyPath: m_Volume
       value: 0.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 2234090857570121751, guid: 0522c75846f3ce7439af7aa8fef7b210, type: 3}
+      propertyPath: m_Pitch
+      value: 0.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 2234090857570121751, guid: 0522c75846f3ce7439af7aa8fef7b210, type: 3}
+      propertyPath: m_Volume
+      value: 0.2
       objectReference: {fileID: 0}
     - target: {fileID: 3795452794666765024, guid: 0522c75846f3ce7439af7aa8fef7b210, type: 3}
       propertyPath: m_Name

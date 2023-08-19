@@ -36782,7 +36782,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 31.5}
-  m_SizeDelta: {x: 2313.748, y: 796.621}
+  m_SizeDelta: {x: 2700, y: 796.621}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1590378654
 MonoBehaviour:
@@ -36817,7 +36817,12 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Collect the fallen stars, rebuild the constellations, and restore the night.
+  m_Text: 'Collect the fallen stars,
+
+    Rebuild the constellations,
+
+    Restore
+    the night!'
 --- !u!222 &1590378655
 CanvasRenderer:
   m_ObjectHideFlags: 0

@@ -72,6 +72,7 @@ public class ConstellationController : MonoBehaviour
 
     public void PlaceStar(bool line)
     {
+        GameObject.Find("MusicController").GetComponent<MenuSfx>().ButtonSelected();
         StarsLeft.text = (int.Parse(StarsLeft.text) - 1).ToString();
         Stars.Add(Instantiate(StarPrefab, Cursor.transform.position, Quaternion.identity));
         if (line) PlaceLine();
@@ -112,6 +113,7 @@ public class ConstellationController : MonoBehaviour
     }
     public void ClearAll()
     {
+        GameObject.Find("MusicController").GetComponent<MenuSfx>().ButtonHighlighted();
         StarsLeft.text = starsMax.ToString();
         foreach (var obj in Stars)
         {
@@ -139,6 +141,7 @@ public class ConstellationController : MonoBehaviour
     {
         if (Stars.Count == starsMax)
         {
+            GameObject.Find("MusicController").GetComponent<MenuSfx>().LevelWin();
             ListConstellations.Add(finalSprite);
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
         }
@@ -151,7 +154,7 @@ public class ConstellationController : MonoBehaviour
             {
                 isCapturing = true;
                 currentCapture = new Texture2D(400, 400, TextureFormat.RGB24, false);
-                currentCapture.ReadPixels(new Rect(275, 10, 400, 400), 0, 0, false);
+                currentCapture.ReadPixels(new Rect(280, 10, 400, 400), 0, 0, false);
                 currentCapture.Apply();
             }
             catch (System.Exception e)

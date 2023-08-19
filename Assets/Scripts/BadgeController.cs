@@ -48,6 +48,7 @@ public class BadgeController : MonoBehaviour
         for (int i = 0; i < ConstellationController.ListConstellations.Count; i++)
             {
                 Constellations[i].sprite = ConstellationController.ListConstellations[i];
+                Constellations[i].color = new Color(255, 255, 255, 1);
                 ConstellationTitles[i].enabled = true;
             }
     }
@@ -63,6 +64,7 @@ public class BadgeController : MonoBehaviour
 
     public void LoadContinue()
     {
+        GameObject.Find("MusicController").GetComponent<MenuSfx>().ButtonSelected();
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 }
