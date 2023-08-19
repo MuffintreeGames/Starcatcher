@@ -177,7 +177,7 @@ public class ConstellationController : MonoBehaviour
             {
             float rectWidth = (EditorOutline.anchorMax.x - EditorOutline.anchorMin.x) * Screen.width;
             float rectHeight = (EditorOutline.anchorMax.y - EditorOutline.anchorMin.y) * Screen.height;
-            Sprite sprite = Sprite.Create(currentCapture, new Rect(0, 0, rectWidth, rectHeight), new Vector2(0, 0));
+            Sprite sprite = Sprite.Create(currentCapture, new Rect(0, 0, Mathf.Floor(rectWidth), Mathf.Floor(rectHeight)), new Vector2(0, 0));
                 finalSprite = sprite;
                 isCapturing = false;
             }
