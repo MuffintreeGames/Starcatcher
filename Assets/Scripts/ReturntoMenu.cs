@@ -15,7 +15,8 @@ public class ReturntoMenu : MonoBehaviour
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.KeypadEnter) || Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.Escape)) // keybinding to place object
-        { 
+        {
+            GameObject.Find("MusicController").GetComponent<MenuSfx>().ButtonSelected();
             SceneManager.LoadScene("MainMenu");
         }
     }

@@ -6,6 +6,7 @@ using UnityEngine.UI;
 
 public class DisappearOnNotSelected : MonoBehaviour
 {
+
     // Start is called before the first frame update
     void Start()
     {
@@ -19,6 +20,10 @@ public class DisappearOnNotSelected : MonoBehaviour
         {
             if (EventSystem.current.currentSelectedGameObject == gameObject)
             {
+                if (GetComponent<Image>().enabled != true)
+                {
+                    GameObject.Find("MusicController").GetComponent<MenuSfx>().ButtonHighlighted();
+                }
                 GetComponent<Image>().enabled = true;
             }
             else
@@ -26,5 +31,10 @@ public class DisappearOnNotSelected : MonoBehaviour
                 GetComponent<Image>().enabled = false;
             }
         }
+    }
+
+    public void PlaySelectedSound()
+    {
+        GameObject.Find("MusicController").GetComponent<MenuSfx>().ButtonSelected();
     }
 }
