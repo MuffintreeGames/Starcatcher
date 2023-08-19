@@ -38,6 +38,8 @@ public class MainMenuController : MonoBehaviour
 
     public void LoadGame()
     {
+        ProgressTracker.levelsClearedInt = 0;
+        ConstellationController.ListConstellations = new();
         SceneManager.LoadScene("Level1");
     }
 

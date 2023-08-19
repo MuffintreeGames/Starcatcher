@@ -35,11 +35,11 @@ public class MusicController : MonoBehaviour
     void UpdateMusic(Scene current, Scene next)
     {
         int newMusicChoice;
-        if (next.name.Contains("Level") && !next.name.Contains("LevelSelect"))
+        if (next.name.Contains("Level"))
         {
             Debug.Log("entering level, should play level music");
             newMusicChoice = 1;
-        } else if (next.name.Contains("Constellation"))
+        } else if (next.name.Contains("Constellation") || next.name.Contains("Badge"))
         {
             Debug.Log("entering constellation, should play constellation music");
             newMusicChoice = 2;

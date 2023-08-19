@@ -58,7 +58,7 @@ public class ConstellationController : MonoBehaviour
             }
         }
 
-        if (Input.GetKeyDown(KeyCode.Space)) // keybinding to place object
+        if (Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.KeypadEnter)) // keybinding to place object
         {
             LoadNextLevel();
         }
