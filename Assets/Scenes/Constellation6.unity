@@ -860,17 +860,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Constellation
-
-    Restored!
-
-
-
-
-
-    Press Space
-
-    to light the way'
+  m_text: "Constellation\nRebuilt!\n\n\n\n\nPress Space\nto restore \nthe night!"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: d31638f9c92080e47a6358a71ba99c15, type: 2}
   m_sharedMaterial: {fileID: 8134827089281639975, guid: d31638f9c92080e47a6358a71ba99c15, type: 2}
@@ -897,8 +887,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 48
-  m_fontSizeBase: 48
+  m_fontSize: 44
+  m_fontSizeBase: 44
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
