@@ -24,6 +24,7 @@ public class ConstellationController : MonoBehaviour
     public List<GameObject> Stars;
     public List<GameObject> Lines;
     public int starsMax;
+    public RectTransform EditorOutline;
 
     public static List<Sprite> ListConstellations = new();
 
@@ -153,8 +154,13 @@ public class ConstellationController : MonoBehaviour
             try
             {
                 isCapturing = true;
-                currentCapture = new Texture2D(400, 400, TextureFormat.RGB24, false);
-                currentCapture.ReadPixels(new Rect(280, 10, 400, 400), 0, 0, false);
+                float rectWidth = (EditorOutline.anchorMax.x - EditorOutline.anchorMin.x) * Screen.width;
+                float rectHeight = (EditorOutline.anchorMax.y - EditorOutline.anchorMin.y) * Screen.height;
+                Vector2 position = new Vector2(EditorOutline.anchorMin.x * Screen.width, EditorOutline.anchorMin.y * Screen.height);
+                //currentCapture = new Texture2D(400, 400, TextureFormat.RGB24, false);
+                //currentCapture.ReadPixels(new Rect(position.x, position.y, 400, 400), 0, 0, false);
+                currentCapture = new Texture2D((int)rectWidth, (int)rectHeight, TextureFormat.RGB24, false);
+                currentCapture.ReadPixels(new Rect(position.x, position.y, (int)rectWidth, (int)rectHeight), 0, 0, false);
                 currentCapture.Apply();
             }
             catch (System.Exception e)
@@ -169,7 +175,9 @@ public class ConstellationController : MonoBehaviour
         {
             if (isCapturing && currentCapture != null)
             {
-                Sprite sprite = Sprite.Create(currentCapture, new Rect(0, 0, 400, 400), new Vector2(0, 0));
+            float rectWidth = (EditorOutline.anchorMax.x - EditorOutline.anchorMin.x) * Screen.width;
+            float rectHeight = (EditorOutline.anchorMax.y - EditorOutline.anchorMin.y) * Screen.height;
+            Sprite sprite = Sprite.Create(currentCapture, new Rect(0, 0, rectWidth, rectHeight), new Vector2(0, 0));
                 finalSprite = sprite;
                 isCapturing = false;
             }
