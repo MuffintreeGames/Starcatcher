@@ -1763,7 +1763,7 @@ MonoBehaviour:
   Stars: []
   Lines: []
   starsMax: 15
-  EditorOutline: {fileID: 0}
+  EditorOutline: {fileID: 608681669}
 --- !u!1 &1277547150
 GameObject:
   m_ObjectHideFlags: 0
