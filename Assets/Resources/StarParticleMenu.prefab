@@ -251,6 +251,7 @@ GameObject:
   - component: {fileID: 4742368623885134161}
   - component: {fileID: 2246911149616929070}
   - component: {fileID: 4367533358577806611}
+  - component: {fileID: 4637778964671172203}
   m_Layer: 0
   m_Name: StarParticleMenu
   m_TagString: Star
@@ -403,6 +404,19 @@ PolygonCollider2D:
       - {x: -0.5409927, y: -0.92439705}
       - {x: -0.42, y: -0.85999995}
       - {x: -0.40463352, y: -0.78439695}
+--- !u!114 &4637778964671172203
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4317523817299033674}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0ee2872776d4a9a46ad91055dced1f82, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lifetime: 10
 --- !u!1 &6943778137943492953
 GameObject:
   m_ObjectHideFlags: 0
