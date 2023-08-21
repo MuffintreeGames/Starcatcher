@@ -58,6 +58,9 @@ public class CrushPoint : MonoBehaviour
             }
         }
         Debug.Log(gameObject.name + " being crushed! Should kill object!");
-        parent.Crush();
+        if (parent != null)
+        {
+            parent.Crush();
+        }
     }
 }
